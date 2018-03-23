@@ -7,6 +7,9 @@ import { AuthGuard } from './auth/guards/auth.guard'
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './/app-routing.module';
 
+//Additional from default modules
+import { FormsModule } from '@angular/forms'
+
 //Custom made modules
 import { ProductModule } from './product/product.module'
 
@@ -30,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
 
     //Custom made modules
     ProductModule
