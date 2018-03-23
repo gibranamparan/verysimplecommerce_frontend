@@ -1,0 +1,24 @@
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prod of products">
+      <td class="actions">
+        <a style="cursor:pointer" class="fa fa-edit" (click)="goToEditProduct(prod.productID)"></a>
+        <i style="cursor:pointer" class="fa fa-remove" (click)="removeProduct(prod.productID)"></i>
+        <i style="cursor:pointer" class="fa fa-shopping-cart"></i>
+      </td>
+      <td>{{prod.name}}</td>
+      <td>{{prod.price | currency}}</td>
+      <td>{{prod.categoryName}}</td>
+      <td>{{prod.description}}</td>
+    </tr>
+  </tbody>
+</table>

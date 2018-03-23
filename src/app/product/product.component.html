@@ -1,0 +1,11 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<h2>Products Catalog</h2>
+
+<div class="card">
+    <div class="card-header" (click)="toggleShowForm()" style="cursor:pointer">Register New Product</div>
+    <div class="card-body" *ngIf="showForm">
+        <app-product-form [product]="newProduct" (onSubmitProduct)="createNewProduct($event)"></app-product-form>
+    </div>
+</div>
+
+<app-list-products [products]="products"></app-list-products>

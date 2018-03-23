@@ -1,0 +1,6 @@
+<a routerLink="/products">
+    <i class="fa fa-arrow-left"></i> <span>Back to Products Catalog</span>
+</a>
+
+<h1>Edit Product</h1>
+<app-product-form [product]="product" (onSubmitProduct)="submitChanges($event)"></app-product-form>
