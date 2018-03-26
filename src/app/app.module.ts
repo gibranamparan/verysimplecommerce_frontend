@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 
 //Additional from default modules
 import { AuthService } from './auth/auth.service'
-import { AuthGuard } from './auth/guards/auth.guard'
 import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './/app-routing.module';
+
+//Guards
+import { AuthGuard } from './auth/guards/auth.guard'
+import { AdminGuard } from './auth/guards/admin.guard'
 
 //Additional from default modules
 import { FormsModule } from '@angular/forms'
@@ -38,7 +41,13 @@ import { LoginComponent } from './login/login.component';
     //Custom made modules
     ProductModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [
+    AuthService, 
+
+    //Custom Guards
+    AuthGuard, 
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

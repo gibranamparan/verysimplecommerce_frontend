@@ -36,7 +36,6 @@ export class AppComponent implements OnInit {
     this._authService.logout().subscribe(
       res=>{
         if(res){
-          debugger
           this.tokenData = this._authService.tokenData
           this.router.navigate(["/login"])
         }else{

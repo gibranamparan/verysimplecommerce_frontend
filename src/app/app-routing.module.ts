@@ -10,12 +10,13 @@ import { LoginComponent } from './login/login.component'
 
 //Route guards
 import { AuthGuard } from './auth/guards/auth.guard'
+import { AdminGuard } from './auth/guards/admin.guard'
 
 
 const routes:Routes = [
   { path: 'login', component: LoginComponent } ,
   { path: "products", component: ProductComponent, canActivate: [AuthGuard] },
-  { path: "products/edit/:id", component: ProductEditComponent },
+  { path: "products/edit/:id", component: ProductEditComponent, canActivate: [AdminGuard] },
   { path: "", component: HomeComponent}
 ]
 

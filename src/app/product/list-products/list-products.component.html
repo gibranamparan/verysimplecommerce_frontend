@@ -11,8 +11,10 @@
   <tbody>
     <tr *ngFor="let prod of products">
       <td class="actions">
-        <a style="cursor:pointer" class="fa fa-edit" (click)="goToEditProduct(prod.productID)"></a>
-        <i style="cursor:pointer" class="fa fa-remove" (click)="removeProduct(prod.productID)"></i>
+        <a style="cursor:pointer" class="fa fa-edit" (click)="goToEditProduct(prod.productID)"
+          *ngIf="isAdmin"></a>
+        <i style="cursor:pointer" class="fa fa-remove" (click)="removeProduct(prod.productID)"
+          *ngIf="isAdmin"></i>
         <i style="cursor:pointer" class="fa fa-shopping-cart"></i>
       </td>
       <td>{{prod.name}}</td>

@@ -10,18 +10,24 @@ const httpOptions = {
 };
 @Injectable()
 export class AuthService {
+  static roleNames = { ADMIN:"Admin", BUYER:"Buyer" }
+
   serverDomain: string = environment.serverDomain
   apiUrl: string = environment.apiUrl
   ctrlUrl:string = this.apiUrl + "account/"
 
+
   constructor(private http:HttpClient) { }
 
-  get isLoggedIn() {
+  get isLoggedIn():boolean {
     return this.tokenData && this.tokenData.isTokenValid && !this.tokenData.isExpired;
   }
 
-  get isSuperAdmin() {
-    return this.tokenData.roleName = "Admin";
+  get isAdmin():boolean {
+    return this.tokenData.roleName == AuthService.roleNames.ADMIN;
+  }
+  get isBuyer():boolean {
+    return this.tokenData.roleName == AuthService.roleNames.BUYER;
   }
 
   /**
@@ -87,6 +93,10 @@ export class AuthService {
       )
   }
 
+  /**
+   * Removes token data from local storage and request server to revoke any claim
+   * related with this token. 
+   */
   logout() {
       // clear token remove user from local storage to log user out 
       return this.http.post(`${this.apiUrl}Account/Logout`, {}, this.getHttpHeadersWithToken())

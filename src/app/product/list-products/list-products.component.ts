@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../models/product'
 import { ProductService } from '../product.service'
+import { AuthService } from '../../auth/auth.service'
 import { Router }  from '@angular/router';
 
 @Component({
@@ -12,7 +13,15 @@ export class ListProductsComponent implements OnInit {
   @Input() products : Array<Product>
 
   constructor(private _productService:ProductService,
-    private router:Router) { }
+    private router:Router,
+    private _authService:AuthService) { }
+
+  get isAdmin():boolean{
+    return this._authService.isAdmin
+  }
+  get isBuyer():boolean{
+    return this._authService.isBuyer
+  }
 
   ngOnInit() {
   }
