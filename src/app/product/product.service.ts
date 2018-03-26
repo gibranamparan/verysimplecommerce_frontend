@@ -2,16 +2,19 @@ import { Injectable } from '@angular/core';
 import { Product } from "../models/product";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from '../../environments/environment'
+import { AuthService } from "../auth/auth.service";
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable()
 export class ProductService {
   apiUrl: string = environment.apiUrl
   ctrlUrl:string = this.apiUrl + "products/"
-  constructor(private http:HttpClient) { }
+
+  constructor(private http:HttpClient,
+    private _authService:AuthService) { }
 
   getProducts(){ 
     return this.http.get(`${this.ctrlUrl}`)
@@ -29,7 +32,8 @@ export class ProductService {
     return this.http.put(`${this.ctrlUrl}`, product, httpOptions)
   }
 
-  removeProduct(productID){ 
-    return this.http.delete(`${this.ctrlUrl}${productID}`, httpOptions)
+  removeProduct(productID){
+    debugger
+    return this.http.delete(`${this.ctrlUrl}${productID}`, this._authService.getHttpHeadersWithToken())
   }
 }

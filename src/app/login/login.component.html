@@ -10,3 +10,13 @@
   </div>
   <button class="btn btn-primary" (click)="login()">Send</button>
 </form>
+<div class="alert">
+
+</div>
+
+<div class="alert alert-warning" *ngIf="showErrorMessage">
+  <button type="button" class="close" data-dismiss="alert" (click)="this.errorMessage = ''">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <strong>Something happened: </strong> <span>{{errorMessage}}</span>
+</div>
