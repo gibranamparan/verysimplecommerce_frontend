@@ -11,11 +11,15 @@
   <tbody>
     <tr *ngFor="let prod of products">
       <td class="actions">
-        <a style="cursor:pointer" class="fa fa-edit" (click)="goToEditProduct(prod.productID)"
-          *ngIf="isAdmin"></a>
-        <i style="cursor:pointer" class="fa fa-remove" (click)="removeProduct(prod.productID)"
-          *ngIf="isAdmin"></i>
-        <i style="cursor:pointer" class="fa fa-shopping-cart"></i>
+        <a routerLink="/products/edit/{{prod.productID}}" *ngIf="isAdmin">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a style="cursor: pointer;" (click)="removeProduct(prod.productID)" *ngIf="isAdmin">
+          <i class="fa fa-remove"></i>
+        </a>
+        <a routerLink="/order/add-product/{{prod.productID}}" *ngIf="isBuyer">
+          <i class="fa fa-shopping-cart" ></i>
+        </a>
       </td>
       <td>{{prod.name}}</td>
       <td>{{prod.price | currency}}</td>

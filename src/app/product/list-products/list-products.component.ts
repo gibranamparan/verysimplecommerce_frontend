@@ -36,8 +36,4 @@ export class ListProductsComponent implements OnInit {
       error=>console.log(error)
     )
   }
-
-  goToEditProduct(productID){
-    this.router.navigate(["/products/edit", productID])
-  }
 }

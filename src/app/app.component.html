@@ -9,20 +9,26 @@
     </li>
   </ul>
   <ul class="navbar-nav">
-    <li *ngIf="isLoggedIn">
-      <span>
-          Hi! {{userName}}
-      </span>
-    </li>
+      <li *ngIf="isLoggedIn">
+        <span class="nav-link">
+            Hi! {{userName}}
+        </span>
+      </li>
+      <li *ngIf="isLoggedIn">
+        <button class="btn btn-success" (click)="goToSummary()">
+          <strong>Your Cart: </strong> 
+          <span>{{totalQty}}</span> 
+        </button>
+      </li>
     <li class="nav-item" *ngIf="!isLoggedIn">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="btn btn-danger" routerLink="/login">Login</a>
     </li>
     <li class="nav-item" *ngIf="isLoggedIn">
         <a class="nav-link" (click)="logOut()" style="cursor: pointer;">Logout</a>
     </li>
   </ul>
 </nav>
-
+<br>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

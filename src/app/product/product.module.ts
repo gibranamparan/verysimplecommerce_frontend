@@ -15,11 +15,15 @@ import { ProductService } from "./product.service";
 import { CategoryService } from "./category.service";
 import { ProductEditComponent } from './product-edit/product-edit.component';
 
+//child routing module
+import { ProductRoutingModule } from './product-routing.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ProductRoutingModule
   ],
   declarations: [
     ListProductsComponent,
@@ -28,7 +32,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     ProductEditComponent],
     providers:[
       ProductService,
-      CategoryService
+      CategoryService,
     ]
 })
 export class ProductModule { }

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from './auth/auth.service'
+
 import { TokenWebApi2 } from "./models/tokenWebApi2";
+
+import { AuthService } from './auth/auth.service'
+import { CartLocalService } from './orders/cart-local.service'
 
 @Component({
   selector: 'app-root',
@@ -10,6 +13,10 @@ import { TokenWebApi2 } from "./models/tokenWebApi2";
 })
 export class AppComponent implements OnInit {
   tokenData:TokenWebApi2
+
+  constructor(private _authService:AuthService,
+    private _cartLocalService:CartLocalService,
+    private router:Router){ }
 
   get isLoggedIn():boolean{
     return this._authService.isLoggedIn;
@@ -26,9 +33,17 @@ export class AppComponent implements OnInit {
     }
     return res;
   }
-
-  constructor(private _authService:AuthService,
-    private router:Router){ }
+  
+  get totalQty():number{
+    let res = 0;
+    let cart = this._cartLocalService.localCart
+    if(cart.length){
+      res = cart.map(item=>item.qty).reduce((itemA, itemB)=>{
+        return itemA + itemB
+      })
+    }
+    return res
+  }
 
   ngOnInit(): void { }
 
@@ -46,5 +61,9 @@ export class AppComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  goToSummary(){
+    this.router.navigate(["/order/order-summary"])
   }
 }

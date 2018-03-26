@@ -29,3 +29,13 @@ export class Product {
         return Product.Categories[idx]
     }
 }
+
+export class ProductOrder{
+    qty:number
+    product:Product
+
+    constructor(qty?:number,product?:Product){
+        this.qty = qty
+        this.product = product
+    }
+}

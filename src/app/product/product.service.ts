@@ -33,7 +33,6 @@ export class ProductService {
   }
 
   removeProduct(productID){
-    debugger
     return this.http.delete(`${this.ctrlUrl}${productID}`, this._authService.getHttpHeadersWithToken())
   }
 }

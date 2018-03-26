@@ -1,0 +1,29 @@
+<button class="btn btn-danger float-right" (click)="clearCart()">
+  Clear Cart
+</button>
+
+<div class="alert alert-info" *ngIf="!cart.length">
+  There is <strong>no products</strong> selected to buy.
+</div>
+
+<div *ngIf="cart.length > 0">
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Qty.</th>
+        <th>Product</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of cart">
+        <td>{{prod.qty}}</td>
+        <td>{{prod.product.name}}</td>
+        <td>{{prod.product.price | currency}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-primary">
+    Order Now
+  </button>
+</div>

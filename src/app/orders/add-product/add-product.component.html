@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">{{product.name | uppercase}}</h4>
+    <strong></strong>
+    <p class="card-text">{{product.description}}</p>
+  </div>
+  <div class="card-footer">
+    <form class="form-inline">
+      <label for="qty">How many?</label>
+      <input type="number" name="qty" min="0" [(ngModel)] = "qty" class="form-control">
+      <button class="btn btn-primary" (click)="addProductToCart()">Add to Cart</button>
+    </form>
+  </div>
+</div>
