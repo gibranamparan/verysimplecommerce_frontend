@@ -18,6 +18,9 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
 //child routing module
 import { ProductRoutingModule } from './product-routing.module';
 
+//Custom Guards
+import { BuyerGuard } from '../auth/guards/buyer.guard'
+
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +36,7 @@ import { ProductRoutingModule } from './product-routing.module';
     providers:[
       ProductService,
       CategoryService,
+      BuyerGuard
     ]
 })
 export class ProductModule { }

@@ -33,9 +33,11 @@ export class Product {
 export class ProductOrder{
     qty:number
     product:Product
+    productID:number
 
     constructor(qty?:number,product?:Product){
         this.qty = qty
         this.product = product
+        this.productID = product.productID
     }
 }

@@ -1,14 +1,23 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">{{product.name | uppercase}}</h4>
-    <strong></strong>
+    <strong>Price: </strong><span>{{product.price | currency}}</span>
     <p class="card-text">{{product.description}}</p>
   </div>
   <div class="card-footer">
-    <form class="form-inline">
-      <label for="qty">How many?</label>
-      <input type="number" name="qty" min="0" [(ngModel)] = "qty" class="form-control">
-      <button class="btn btn-primary" (click)="addProductToCart()">Add to Cart</button>
-    </form>
+    <div class="row">
+      <form class="form-inline col-md-8">
+        <label for="qty">How many?</label>
+        <input type="number" name="qty" min="0" [(ngModel)] = "qty" class="form-control">
+
+        <button class="btn btn-primary" (click)="addProductToCart()" 
+          [disabled]="qty == 0">Add to Cart</button>
+
+      </form>
+      <span class="col-md-4" style="text-align: right">
+        <strong>Total Cost:</strong>
+        <span>{{totalCost | currency}}</span>
+      </span>
+    </div>
   </div>
 </div>

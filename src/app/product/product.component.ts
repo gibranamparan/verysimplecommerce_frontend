@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product' 
 import { ProductService } from "./product.service";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
   selector: 'app-product',
@@ -12,13 +13,19 @@ export class ProductComponent implements OnInit {
   products : Array<Product>
   showForm : boolean = false
 
+  get isAdmin():boolean{
+    return this._authService.isAdmin
+  }
+  get isBuyer():boolean{
+    return this._authService.isBuyer
+  }
+  
   updateList(product){
     this.products.push(product)
   }
 
-  constructor(private _productService:ProductService) { 
-    
-  }
+  constructor(private _productService:ProductService,
+    private _authService:AuthService) { }
 
   ngOnInit() {
     this.getProducts()
@@ -42,7 +49,7 @@ export class ProductComponent implements OnInit {
       (res:Product)=>{
         if(res.productID)
         {
-          this.updateList(product)
+          this.updateList(res)
           this.newProduct = new Product()
         }
       },

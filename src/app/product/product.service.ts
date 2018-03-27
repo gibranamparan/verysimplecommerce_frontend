@@ -25,11 +25,11 @@ export class ProductService {
   }
 
   createProduct(product : Product){ 
-    return this.http.post(`${this.ctrlUrl}`, product, httpOptions)
+    return this.http.post(`${this.ctrlUrl}`, product, this._authService.getHttpHeadersWithToken())
   }
 
   editProduct(product : Product){
-    return this.http.put(`${this.ctrlUrl}`, product, httpOptions)
+    return this.http.put(`${this.ctrlUrl}`, product, this._authService.getHttpHeadersWithToken())
   }
 
   removeProduct(productID){

@@ -1,0 +1,27 @@
+<h1>Purchases History</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th>User</th>
+      <th>Purchase Date</th>
+      <th>Total Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pur of purchases">
+      <td class="actions">
+          <a (click)="deletePurchase(pur.purchaseID)" *ngIf="isAdmin">
+            <i class="fa fa-remove"></i>
+          </a>
+          <a routerLink="/purchase/details/{{pur.purchaseID}}">
+            <i class="fa fa-remove"></i>
+          </a>
+      </td>
+      <td>{{pur.buyer.UserName}}</td>
+      <td>{{pur.createdAt | date:'medium'}}</td>
+      <td>{{pur.totalAmount | currency }}</td>
+    </tr>
+  </tbody>
+</table>

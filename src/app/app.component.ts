@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
     private _cartLocalService:CartLocalService,
     private router:Router){ }
 
+  get isBuyer():boolean{
+    return this._authService.isBuyer
+  }
+  
   get isLoggedIn():boolean{
     return this._authService.isLoggedIn;
   }
@@ -27,13 +31,12 @@ export class AppComponent implements OnInit {
   }
 
   get userName() : string{
-    let res = ''
-    if(this.token != undefined){
-      res = this.token.userName;
-    }
-    return res;
+    return this.token != undefined ? this.token.userName : '';
   }
   
+  /**
+   * Total of items added to the order.
+   */
   get totalQty():number{
     let res = 0;
     let cart = this._cartLocalService.localCart

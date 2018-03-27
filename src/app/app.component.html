@@ -7,6 +7,9 @@
     <li class="nav-item">
       <a class="nav-link" routerLink="/products">Catalog</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/order/purchases-history">Purchases History</a>
+    </li>
   </ul>
   <ul class="navbar-nav">
       <li *ngIf="isLoggedIn">
@@ -14,7 +17,7 @@
             Hi! {{userName}}
         </span>
       </li>
-      <li *ngIf="isLoggedIn">
+      <li *ngIf="isBuyer">
         <button class="btn btn-success" (click)="goToSummary()">
           <strong>Your Cart: </strong> 
           <span>{{totalQty}}</span> 

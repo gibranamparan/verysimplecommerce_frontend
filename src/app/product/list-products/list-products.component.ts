@@ -19,6 +19,7 @@ export class ListProductsComponent implements OnInit {
   get isAdmin():boolean{
     return this._authService.isAdmin
   }
+  
   get isBuyer():boolean{
     return this._authService.isBuyer
   }
@@ -26,6 +27,11 @@ export class ListProductsComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Makes a requesst to delete the product given its ID, if it was removed successfully from database
+   * then its removed from view.
+   * @param productID ID of the product to remove from database and view.
+   */
   removeProduct(productID){
     this._productService.removeProduct(productID).subscribe(
       (res:any)=>{

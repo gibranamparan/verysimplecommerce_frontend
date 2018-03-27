@@ -18,6 +18,10 @@ export class AddProductComponent implements OnInit {
     private router:Router,
     private route:ActivatedRoute) { }
 
+  get totalCost():number{
+    return this.qty * this.product.price
+  }
+  
   ngOnInit() {
     let productID
     this.route.params.subscribe(
