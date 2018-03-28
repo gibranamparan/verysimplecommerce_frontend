@@ -40,12 +40,10 @@ export class OrderSummaryComponent implements OnInit {
     this._purchaseService.createPurchase(this.purchase).subscribe(
       res=>{
         console.log(res)
-        debugger
         this._cartLocalService.removeCart()
         this.router.navigate(["/order/order-success"])
       },
       error => {
-        debugger
         console.log(error)
       }
     )

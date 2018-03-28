@@ -1,3 +1,24 @@
-<p>
-  purchase-details works!
-</p>
+<h1>Purchase Details</h1>
+<strong>User: </strong><span *ngIf='purchase.buyer'>{{purchase.buyer.UserName}}</span>
+<span> | </span>
+<strong>Bought At: </strong><span>{{purchase.createdAt | date:'medium'}}</span>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Qty.</th>
+      <th>Product</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of purchase.products">
+      <td>{{order.qty}}</td>
+      <td>{{order.product.name}}</td>
+      <td>{{order.product.price | currency}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <td style="text-align: right" colspan="2">Total</td>
+    <td><strong>{{purchase.totalAmount | currency}}</strong></td>
+  </tfoot>
+</table>

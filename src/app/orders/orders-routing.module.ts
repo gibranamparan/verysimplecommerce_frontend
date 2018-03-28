@@ -17,7 +17,7 @@ const routes: Routes = [
   {path:'order/order-summary', component: OrderSummaryComponent, canActivate: [BuyerGuard]},
   {path:'order/order-success', component: OrderSuccessComponent, canActivate: [BuyerGuard]},
   {path:'order/purchases-history', component: PurchasesHistoryComponent, canActivate: [AuthGuard]},
-  {path:'order/purchases-details/:id', component: PurchaseDetailsComponent, canActivate: [AuthGuard]}
+  {path:'order/purchase-details/:id', component: PurchaseDetailsComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

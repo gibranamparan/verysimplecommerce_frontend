@@ -22,7 +22,6 @@ export class PurchasesHistoryComponent implements OnInit {
       res=>{
         console.log(res)
         this.purchases = res as Array<Purchase>;
-        debugger
       },
       err=>{
         console.log(err)
@@ -36,7 +35,6 @@ export class PurchasesHistoryComponent implements OnInit {
         if(res){
           console.log(res)
           this.purchases = this.purchases.filter(item=>item.purchaseID != id)
-          debugger
         }
       },
       err=>{

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Purchase } from "../../models/Purchase";
+import { Purchase } from "../../models/purchase";
 import { PurchaseService } from "../purchase.service";
+import { Product, ProductOrder } from '../../models/product';
 
 @Component({
   selector: 'app-purchase-details',
@@ -9,7 +11,7 @@ import { PurchaseService } from "../purchase.service";
   styleUrls: ['./purchase-details.component.css']
 })
 export class PurchaseDetailsComponent implements OnInit {
-  purchase : Purchase
+  purchase : Purchase = new Purchase(new Array<ProductOrder>())
 
   constructor(private route : ActivatedRoute,
     private _purchaseService : PurchaseService) { }
@@ -19,6 +21,7 @@ export class PurchaseDetailsComponent implements OnInit {
     this.route.params.subscribe(
       params => { purchaseID = params.id}
     )
+    this.loadPurchase(purchaseID)
   }
 
   loadPurchase(purchaseID){

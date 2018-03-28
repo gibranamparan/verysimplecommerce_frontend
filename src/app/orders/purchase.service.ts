@@ -18,20 +18,18 @@ export class PurchaseService {
     private _authService:AuthService) { }
 
   createPurchase(purchase:Purchase){
-    debugger
     return this.http.post(`${this.ctrlUrl}`, purchase, this._authService.getHttpHeadersWithToken())
   }
 
   getPurchases(){
-    debugger
     return this.http.get(`${this.ctrlUrl}`, this._authService.getHttpHeadersWithToken())
   }
 
   removePurchase(id): any {
-    return this.http.delete(`${this.ctrlUrl}/${id}`, this._authService.getHttpHeadersWithToken())
+    return this.http.delete(`${this.ctrlUrl}${id}`, this._authService.getHttpHeadersWithToken())
   }
 
   getPurchase(id): any {
-    return this.http.get(`${this.ctrlUrl}/${id}`, this._authService.getHttpHeadersWithToken())
+    return this.http.get(`${this.ctrlUrl}${id}`, this._authService.getHttpHeadersWithToken())
   }
 }

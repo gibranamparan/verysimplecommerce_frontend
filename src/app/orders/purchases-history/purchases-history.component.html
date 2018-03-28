@@ -15,8 +15,8 @@
           <a (click)="deletePurchase(pur.purchaseID)" *ngIf="isAdmin">
             <i class="fa fa-remove"></i>
           </a>
-          <a routerLink="/purchase/details/{{pur.purchaseID}}">
-            <i class="fa fa-remove"></i>
+          <a routerLink="/order/purchase-details/{{pur.purchaseID}}">
+            <i class="fa fa-list"></i>
           </a>
       </td>
       <td>{{pur.buyer.UserName}}</td>
